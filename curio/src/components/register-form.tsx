@@ -17,6 +17,10 @@ export function RegisterForm({
   ...props
 }: React.ComponentProps<"div">) {
     const [registerEnabled, setRegisterEnabled] = useState(false);
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [invalidEmail, setInvalidEmail] = useState(false);
+    const [invalidPassword, setInvalidPassword] = useState(false);
+    const [invalidConfirmPassword, setInvalidConfirmPassword] = useState(false);
     const [registerData, setRegisterData] = useState<RegisterData>({
         username: "",
         firstName: "",
@@ -26,7 +30,19 @@ export function RegisterForm({
     });
 
     const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        
+      console.log(e.target.value);
+        setRegisterData({
+            ...registerData,
+            [e.target.id]: e.target.value,
+        });
+    }
+
+    const isValidEmail = (email: string) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    const isValidPassword = (password: string) => {
+        return password.length >= 8 && /[A-Z]/.test(password) && /[a-z]/.test(password) && /[0-9]/.test(password) && /[!@#$%^&*]/.test(password);
     }
   return (
     <div className={cn("flex flex-col gap-4", className)} {...props}>
@@ -44,7 +60,8 @@ export function RegisterForm({
                     id="username"
                     type="username"
                     required
-              
+                    defaultValue={registerData.username}
+                    onBlur={handleFormChange}
                   />
                 </div>
                 <div className="grid gap-3">
@@ -54,6 +71,8 @@ export function RegisterForm({
                     type="firstName"
                     name="firstName"
                     required
+                    defaultValue={registerData.firstName}
+                    onBlur={handleFormChange}
                   />
                 </div>
                 <div className="grid gap-3">
@@ -63,6 +82,8 @@ export function RegisterForm({
                     type="lastName"
                     name="lastName"
                     required
+                    defaultValue={registerData.lastName}
+                    onBlur={handleFormChange}
                   />
                 </div>
                 <div className="grid gap-3">
@@ -72,19 +93,24 @@ export function RegisterForm({
                     type="email"
                     name="email"
                     required
+                    defaultValue={registerData.email}
+                    onBlur={handleFormChange}
                   />
                 </div>
                 <div className="grid gap-3">
                   <div className="flex items-center">
                     <Label htmlFor="password">Password</Label>
                   </div>
-                  <Input id="password" type="password" name="password" required />
+                  <Input id="password" type="password" name="password" required defaultValue={registerData.password} onBlur={handleFormChange} />
                 </div>
                 <div className="grid gap-3">
                   <div className="flex items-center">
                     <Label htmlFor="confirmPassword">Confirm Password</Label>
                   </div>
-                  <Input id="confirmPassword" type="password" name="confirmPassword" required />
+                  <Input id="confirmPassword" type="password" name="confirmPassword" required defaultValue={confirmPassword} onBlur={(e) => {
+                    setConfirmPassword(e.target.value);
+                    setRegisterEnabled(e.target.value === registerData.password);
+                  }} />
                 </div>
                 <Button type="submit" className="w-full" disabled={!registerEnabled}>
                   Register
