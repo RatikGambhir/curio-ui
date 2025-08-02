@@ -140,15 +140,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <div className="bg-transparent">
-        <img
+        {/* TODO: Fix logo background color, for some reaso its not transparent */}
+      <img
         src={curioLogo}
         alt="Curio Logo"
         className="mb-8 w-64 h-auto"
         style={{ mixBlendMode: 'lighten', backgroundColor: 'transparent' }}
       />
-        </div>
-      
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />

@@ -121,9 +121,4 @@
   [data-sidebar="sidebar"] {
     @apply bg-transparent;
   }
-
-  img {
-    mix-blend-mode: lighten;
-    background-color: transparent;
-  }
 }
