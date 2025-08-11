@@ -146,7 +146,7 @@ export function ChatSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) 
         src={curioLogo}
         alt="Curio Logo"
         className="mb-8 w-64 h-auto"
-        style={{ mixBlendMode: 'lighten', backgroundColor: 'transparent' }}
+        style={{ mixBlendMode: 'lighten' }}
       />
       </SidebarHeader>
       <SidebarContent>

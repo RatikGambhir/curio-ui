@@ -6,7 +6,7 @@ import curioLogo from '../assets/curio-logo.png'
 function Login() {
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen ">
       <img
         src={curioLogo}
         alt="Curio Logo"
