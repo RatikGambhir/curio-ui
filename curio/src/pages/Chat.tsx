@@ -1,6 +1,5 @@
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { ChatSidebar } from "@/components/chat-sidebar"
-import { Textarea } from "@/components/ui/textarea"
 
 const Chat = () => {
   return (
