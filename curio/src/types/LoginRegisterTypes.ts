@@ -1,9 +1,9 @@
 type RegisterData = {
-    username: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    password: string;
-}
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  phone: string | null;
+};
 
 export type { RegisterData };
