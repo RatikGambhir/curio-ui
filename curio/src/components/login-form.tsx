@@ -1,19 +1,38 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useState } from "react";
+
+type LoginForm = {
+  username: string;
+  password: string;
+};
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const [loginInput, setLoginInput] = useState<LoginForm>({
+    username: "",
+    password: "",
+  });
+
+  const handleLoginFormChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setLoginInput({
+      ...loginInput,
+      [event.target.id]: event.target.value,
+    });
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    // TODO: Implement login logic
+  };
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
@@ -22,7 +41,11 @@ export function LoginForm({
         </CardHeader>
 
         <CardContent>
-          <form>
+          <form
+            onSubmit={(e) => {
+              handleSubmit(e);
+            }}
+          >
             <div className="grid gap-6">
               <div className="flex flex-col gap-4">
                 <Button variant="outline" className="w-full">
@@ -61,6 +84,7 @@ export function LoginForm({
                     type="email"
                     placeholder="m@example.com"
                     required
+                    onBlur={handleLoginFormChange}
                   />
                 </div>
                 <div className="grid gap-3">
@@ -73,7 +97,12 @@ export function LoginForm({
                       Forgot your password?
                     </a>
                   </div>
-                  <Input id="password" type="password" required />
+                  <Input
+                    id="password"
+                    type="password"
+                    required
+                    onBlur={handleLoginFormChange}
+                  />
                 </div>
                 <Button type="submit" className="w-full">
                   Login

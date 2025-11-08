@@ -22,9 +22,6 @@ export function RegisterForm({
   });
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
-    console.log(registerData);
-    console.log("supasbase", supabase);
     setRegisterData({
       ...registerData,
       [e.target.id]: e.target.value,
@@ -43,9 +40,6 @@ export function RegisterForm({
       phone: registerData.phone ?? "",
       email: registerData.email,
       password: registerData.password,
-      options: {
-        emailRedirectTo: "http://localhost:5173/home",
-      },
     });
     if (error) {
       console.error(error);
