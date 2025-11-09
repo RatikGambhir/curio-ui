@@ -4,9 +4,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
+import { supabase } from "@/util/SupabaseClient";
 
 type LoginForm = {
-  username: string;
+  email: string;
   password: string;
 };
 
@@ -15,7 +16,7 @@ export function LoginForm({
   ...props
 }: React.ComponentProps<"div">) {
   const [loginInput, setLoginInput] = useState<LoginForm>({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -28,9 +29,18 @@ export function LoginForm({
     });
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // TODO: Implement login logic
+    console.log(loginInput);
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: loginInput.email,
+      password: loginInput.password,
+    });
+    if (error) {
+      //TODO: Handle error with invalid credentials error
+      console.error(error);
+    }
+    console.log(data);
   };
 
   return (
