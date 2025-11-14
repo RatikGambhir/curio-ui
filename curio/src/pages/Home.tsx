@@ -1,5 +1,5 @@
 import { AppSidebar } from "@/components/app-sidebar";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { useAuthenticatedUser } from "@/hooks/useAuthenticatedUser";
 
 const Home = () => {
@@ -9,6 +9,9 @@ const Home = () => {
   return (
     <SidebarProvider>
       <AppSidebar />
+      <main>
+        <SidebarTrigger />
+      </main>
     </SidebarProvider>
   );
 };

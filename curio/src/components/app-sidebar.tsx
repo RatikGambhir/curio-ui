@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 import {
   AudioWaveform,
   BookOpen,
@@ -10,19 +10,19 @@ import {
   PieChart,
   Settings2,
   SquareTerminal,
-} from "lucide-react"
-import curioLogo from '../assets/curio-logo.png'
-import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
-import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
+} from "lucide-react";
+import curioLogo from "../assets/curio-logo.png";
+import { NavMain } from "@/components/nav-main";
+import { NavProjects } from "@/components/nav-projects";
+import { NavUser } from "@/components/nav-user";
+import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 // This is sample data.
 const data = {
@@ -90,7 +90,6 @@ const data = {
           title: "Feedback",
           url: "#",
         },
-        
       ],
     },
     {
@@ -134,20 +133,20 @@ const data = {
       icon: Map,
     },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         {/* TODO: Fix logo background color, for some reaso its not transparent */}
-      <img
-        src={curioLogo}
-        alt="Curio Logo"
-        className="mb-8 w-64 h-auto"
-        data-image="logo"
-        style={{ mixBlendMode: 'lighten' }}
-      />
+        <img
+          src={curioLogo}
+          alt="Curio Logo"
+          className="mb-8 w-64 h-auto"
+          data-image="logo"
+          style={{ mixBlendMode: "lighten" }}
+        />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
@@ -158,5 +157,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }
