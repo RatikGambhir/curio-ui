@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import type { RegisterData } from "@/types/LoginRegisterTypes";
-import { supabase } from "@/util/SupabaseClient.ts";
+import { supabase } from "@/lib/SupabaseClient";
 import { useNavigate } from "react-router-dom";
 export function RegisterForm({
   className,

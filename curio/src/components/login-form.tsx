@@ -4,7 +4,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
-import { supabase } from "@/util/SupabaseClient";
+import { useNavigate } from "react-router-dom";
+import { useAuthenticatedUser } from "@/hooks/useAuthenticatedUser";
+
+import { supabase } from "@/lib/SupabaseClient";
 
 type LoginForm = {
   email: string;
@@ -20,6 +23,8 @@ export function LoginForm({
     password: "",
   });
 
+  const navigate = useNavigate();
+
   const handleLoginFormChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
@@ -28,6 +33,8 @@ export function LoginForm({
       [event.target.id]: event.target.value,
     });
   };
+
+  const { loginUser } = useAuthenticatedUser();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -40,7 +47,11 @@ export function LoginForm({
       //TODO: Handle error with invalid credentials error
       console.error(error);
     }
-    console.log(data);
+    if (data) {
+      console.log(data);
+      loginUser(data.user?.id ?? null);
+      navigate("/home");
+    }
   };
 
   return (
