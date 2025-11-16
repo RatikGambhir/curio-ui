@@ -1,5 +1,9 @@
 import { AppSidebar } from "@/components/app-sidebar";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
 import { useAuthenticatedUser } from "@/hooks/useAuthenticatedUser";
 
 const Home = () => {
@@ -9,9 +13,9 @@ const Home = () => {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main>
+      <SidebarInset className="ml-[var(--sidebar-width)] w-[calc(100vw-var(--sidebar-width))]">
         <SidebarTrigger />
-      </main>
+      </SidebarInset>
     </SidebarProvider>
   );
 };
