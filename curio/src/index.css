@@ -44,7 +44,11 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0); /* keep as a real color */
+  --background: color-mix(
+    in oklab,
+    var(--background-gradient) 80%,
+    transparent
+  ); /* keep as a real color */
   /*--background-gradient: linear-gradient(
     to bottom,
     #b56576 35%,
@@ -131,8 +135,15 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
+  /*body {
     background-image: var(--background-gradient);
+    @apply text-foreground min-h-screen;
+  }*/
+  body {
+    background-image: url(assets/pexels-felix-mittermeier-956999.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     @apply text-foreground min-h-screen;
   }
 }
