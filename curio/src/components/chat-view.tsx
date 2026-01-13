@@ -25,8 +25,8 @@ const mockMessages = [];
 export function ChatView({ ...props }) {
   //const { messages } = useChat();
   return (
-    <div className="border border-blue-500 size-full mx-auto p-4">
-      <div className="flex flex-col h-full">
+    <div className="mx-auto p-4 max-h-250 w-full">
+      <div className="flex flex-col">
         <Conversation>
           <ConversationContent>
             {mockMessages.length > 0 ? (

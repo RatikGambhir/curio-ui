@@ -30,8 +30,7 @@ export function ChatPrompt() {
   return (
     <PromptInput
       onSubmit={askQuestion}
-      className="mt-4 rounded-3xl border border-white/20 bg-white/20 backdrop-blur-2xl shadow-[0_0_0_1px_rgba(255,255,255,0.12),0_18px_45px_rgba(15,23,42,0.65)]
-"
+
       globalDrop
       multiple
     >

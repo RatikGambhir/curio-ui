@@ -56,11 +56,17 @@
     #6d597a 100%
   );*/
   --glass-bg: color-mix(in oklab, var(--bg) 80%, transparent);
-  --background-gradient: linear-gradient(
-    to bottom,
-    #abc4ff 35%,
-    #c1d3fe 65%,
-    #e2eafc 100%
+  /*--background-gradient: linear-gradient(*/
+  /*  to bottom,*/
+  /*  #abc4ff 35%,*/
+  /*  #c1d3fe 65%,*/
+  /*  #e2eafc 100%*/
+  /*);*/
+  background-image: linear-gradient(
+          to bottom,
+          #1a2332,
+          #2d3748,
+          #e8a896
   );
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -135,15 +141,9 @@
   * {
     @apply border-border outline-ring/50;
   }
-  /*body {
+  body {
     background-image: var(--background-gradient);
     @apply text-foreground min-h-screen;
-  }*/
-  body {
-    background-image: url(assets/pexels-felix-mittermeier-956999.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    @apply text-foreground min-h-screen;
   }
+
 }
