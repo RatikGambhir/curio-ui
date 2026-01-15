@@ -23,7 +23,7 @@ const Chat = () => {
               </div>
             </div>
           ) : (
-            <div className="backdrop-blur-2xl bg-white/10 border border-white/20 rounded-3xl shadow-2xl p-6 mb-6 absolute items-center justify-center w-full max-w-3xl mx-auto">
+            <div className="backdrop-blur-2xl bg-white/10 border rounded-3xl shadow-2xl p-6 mb-6 absolute items-center justify-center w-full max-w-3xl mx-auto">
               <ChatPrompt />
             </div>
           )}

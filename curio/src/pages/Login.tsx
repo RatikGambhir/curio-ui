@@ -8,7 +8,7 @@ function Login() {
         src={curioLogo}
         alt="Curio Logo"
         className="mb-8 w-64 h-auto"
-        style={{ mixBlendMode: "lighten" }}
+        style={{ mixBlendMode: "multiply" }}
       />
       <LoginForm />
     </div>

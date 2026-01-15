@@ -145,7 +145,7 @@ export function LoginForm({
           </form>
         </CardContent>
       </Card>
-      <div className="text-white *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+      <div className="text-black *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
         By clicking continue, you have confirmed that you have read our{" "}
         <a href="#">Privacy Policy</a>.
       </div>

@@ -30,7 +30,6 @@ export function ChatPrompt() {
   return (
     <PromptInput
       onSubmit={askQuestion}
-
       globalDrop
       multiple
     >

@@ -44,24 +44,10 @@
 
 :root {
   --radius: 0.625rem;
-  --background: color-mix(
-    in oklab,
-    var(--background-gradient) 80%,
-    transparent
-  ); /* keep as a real color */
-  /*--background-gradient: linear-gradient(
-    to bottom,
-    #b56576 35%,
-    #e56b6f 65%,
-    #6d597a 100%
-  );*/
+  --background: #cce3de;
+  /*--background: #eaf4f4;*/
   --glass-bg: color-mix(in oklab, var(--bg) 80%, transparent);
-  /*--background-gradient: linear-gradient(*/
-  /*  to bottom,*/
-  /*  #abc4ff 35%,*/
-  /*  #c1d3fe 65%,*/
-  /*  #e2eafc 100%*/
-  /*);*/
+
   background-image: linear-gradient(
           to bottom,
           #1a2332,
@@ -142,7 +128,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    background-image: var(--background-gradient);
+    background-color: var(--background);
     @apply text-foreground min-h-screen;
   }
 
