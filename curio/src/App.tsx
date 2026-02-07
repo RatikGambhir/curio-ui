@@ -1,16 +1,19 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 import "./App.css";
+import Chat from "./pages/Chat";
+import Home from "./pages/Home";
+import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import ProfileSettings from "./pages/ProfileSettings";
-import Home from "./pages/Home";
 import Register from "./pages/Register";
-import Chat from "./pages/Chat";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/landing" element={<Landing />} />
         <Route path="/chat" element={<Chat />} />
         <Route path="/home" element={<Home />} />
         <Route path="/profile" element={<ProfileSettings />} />
