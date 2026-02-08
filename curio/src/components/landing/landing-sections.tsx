@@ -18,6 +18,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import {cn} from "@/lib/utils.ts";
+import {useEffect, useRef} from "react";
 
 export type BookPage = {
   left: string;
@@ -132,41 +134,76 @@ export function LandingNavbar({ onContactClick }: LandingNavbarProps) {
   );
 }
 
-export function HeroSection() {
-  return (
-    <section className="mx-auto max-w-4xl px-6 pb-12 pt-10 text-center md:pt-20">
-      <h1
-        className="animate-in fade-in-0 slide-in-from-bottom-4 mb-5 text-5xl font-semibold tracking-tight duration-500 md:text-7xl"
-        style={{ fontFamily: "var(--font-serif)" }}
-      >
-        curio
-      </h1>
-      <p className="animate-in fade-in-0 slide-in-from-bottom-3 mb-4 text-2xl text-foreground duration-700 md:text-5xl/none">
-        Every question unlocks new knowledge
-      </p>
-      <p className="animate-in fade-in-0 slide-in-from-bottom-3 mx-auto mb-10 max-w-2xl text-lg text-muted-foreground duration-1000 md:text-4xl/none">
-        Ask AI anything. Build your personal knowledge vault. Let curiosity
-        guide you.
-      </p>
-
-      <div className="animate-in fade-in-0 slide-in-from-bottom-2 flex flex-col items-center justify-center gap-4 duration-1000 sm:flex-row">
-        <Button
-          size="lg"
-          className="h-14 rounded-xl px-8 text-lg transition-transform duration-200 hover:-translate-y-0.5"
-        >
-          Start Exploring
-        </Button>
-        <Button
-          variant="outline"
-          size="lg"
-          className="h-14 rounded-xl bg-card px-8 text-lg transition-transform duration-200 hover:-translate-y-0.5"
-        >
-          See How It Works
-        </Button>
-      </div>
-    </section>
-  );
+interface HeroSectionProps {
+  className?: string;
 }
+
+export const HeroSection = ({ className }: HeroSectionProps) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.40; // 0.5 = half speed, 0.75 = subtle slow
+    }
+  }, []);
+  return (
+      <section
+          className={cn(
+              "flex min-h-screen items-center justify-between py-14",
+              className,
+          )}
+      >
+        <div className="flex flex-col gap-5 px-[10%] lg:w-[50%] lg:pr-0">
+          <h1
+              className="animate-in fade-in-0 slide-in-from-bottom-4 mb-5 text-5xl font-semibold tracking-tight duration-500 md:text-7xl"
+              style={{ fontFamily: "var(--font-serif)" }}
+          >
+            curio
+          </h1>
+
+            <h2
+                className="animate-in fade-in-0 slide-in-from-bottom-4 mb-5 text-5xl  tracking-tight duration-500 md:text-2xl"
+                style={{ fontFamily: "var(--font-serif)" }}
+            >
+              For every question - there's an <span>Answer</span>
+            </h2>
+
+
+          <div className="flex flex-col gap-4 font-medium md:flex-row">
+            <div className="animate-in fade-in-0 slide-in-from-bottom-2 flex flex-col items-center justify-center gap-4 duration-1000 sm:flex-row">
+              <Button
+                  size="lg"
+                  className="h-14 rounded-xl px-8 text-lg transition-transform duration-200 hover:-translate-y-0.5"
+              >
+                Start Exploring
+              </Button>
+              <Button
+                  variant="outline"
+                  size="lg"
+                  className="h-14 rounded-xl bg-card px-8 text-lg transition-transform duration-200 hover:-translate-y-0.5"
+              >
+                See How It Works
+              </Button>
+            </div>
+          </div>
+        </div>
+        <div className="relative hidden h-[720px] w-[45%] overflow-hidden rounded-l-full bg-black lg:block">
+          <video
+              autoPlay
+              ref={videoRef}
+              loop
+              muted
+              playsInline
+              data-wf-ignore="true"
+              data-object-fit="cover"
+              className="h-full w-full rounded-tl-xl object-cover"
+          >
+            <source src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/video-1.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </section>
+  );
+};
 
 export function AppPreviewSection() {
   return (

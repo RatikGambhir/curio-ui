@@ -67,7 +67,7 @@ const FeatureBentoGrid = ({ className }: FeatureBentoGridProps) => {
 
   return (
     <section
-      className={cn("min-h-screen overflow-hidden bg-muted py-32", className)}
+      className={cn("min-h-screen overflow-hidden py-32", className)}
     >
       <div className="container flex w-full flex-col items-center justify-center px-4">
         <div className="max-w-5xl">

@@ -60,7 +60,7 @@ const Landing = () => {
   };
 
   return (
-    <main className="flex flex-col min-h-screen bg-background text-foreground">
+    <main className="flex flex-col min-h-screen bg-muted text-foreground">
       <LandingNavbar onContactClick={scrollToContact} />
       <HeroSection />
 
@@ -70,7 +70,7 @@ const Landing = () => {
 
       </div>
       <FeatureBentoGrid />
-      <BookSection page={currentPage} onNextPage={handleNextPage} />
+      {/*<BookSection page={currentPage} onNextPage={handleNextPage} />*/}
       <ContactSection />
       <LandingFooter />
     </main>
