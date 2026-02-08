@@ -18,6 +18,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { HyperText } from "@/components/ui/hypertext";
 import {cn} from "@/lib/utils.ts";
 import {useEffect, useRef} from "react";
 
@@ -107,11 +108,9 @@ type LandingNavbarProps = {
 export function LandingNavbar({ onContactClick }: LandingNavbarProps) {
   return (
     <nav className="animate-in fade-in-0 slide-in-from-top-2 mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6 duration-500 md:px-8">
-      <img
-        src={curioLogo}
-        alt="Curio"
-        className="h-10 w-10 rounded-md object-contain md:h-12 md:w-12"
-      />
+      <div className="h-10 w-10 rounded-md object-contain md:h-12 md:w-12">
+
+      </div>
 
       <div className="flex items-center gap-2 md:gap-6">
         <DropdownMenu>
@@ -153,19 +152,35 @@ export const HeroSection = ({ className }: HeroSectionProps) => {
               className,
           )}
       >
-        <div className="flex flex-col gap-5 px-[10%] lg:w-[50%] lg:pr-0">
+        <div className="flex flex-col gap-3 px-[10%] lg:w-[50%] lg:pr-0">
           <h1
-              className="animate-in fade-in-0 slide-in-from-bottom-4 mb-5 text-5xl font-semibold tracking-tight duration-500 md:text-7xl"
+              className="animate-in fade-in-0 slide-in-from-bottom-4 mb-2 text-5xl font-semibold tracking-tight duration-500 md:text-7xl"
               style={{ fontFamily: "var(--font-serif)" }}
           >
-            curio
+            <span className="flex items-center">
+              <span>curio</span>
+              <img
+                src={curioLogo}
+                alt="Curio logo"
+                className="h-6/12 w-6/12 rounded-md object-contain"
+              />
+            </span>
           </h1>
 
             <h2
-                className="animate-in fade-in-0 slide-in-from-bottom-4 mb-5 text-5xl  tracking-tight duration-500 md:text-2xl"
+                className="animate-in fade-in-0 slide-in-from-bottom-4 mb-5 text-2xl  tracking-tight duration-500 md:text-2xl"
                 style={{ fontFamily: "var(--font-serif)" }}
             >
-              For every question - there's an <span>Answer</span>
+              For every question, there's an{" "}
+              <HyperText
+                as="h2"
+                startOnView={true}
+                animateOnHover={false}
+                duration={2000}
+                className=" py-0 text-inherit font-sans"
+              >
+                Answer
+              </HyperText>
             </h2>
 
 
@@ -278,9 +293,16 @@ export function BookSection({ page, onNextPage }: BookSectionProps) {
   );
 }
 
-export function ContactSection() {
+type ContactSectionProps = {
+  className?: string;
+};
+
+export function ContactSection({ className }: ContactSectionProps) {
   return (
-    <section id="contact" className="mx-auto w-full max-w-5xl scroll-mt-8 px-6 pb-20">
+    <section
+      id="contact"
+      className={cn("mx-auto w-full max-w-5xl scroll-mt-8 px-6 pb-20", className)}
+    >
       <Card className="animate-in fade-in-0 slide-in-from-bottom-6 rounded-3xl bg-card p-4 duration-700 md:p-6">
         <CardHeader className="text-center">
           <CardTitle className="text-4xl md:text-6xl">Get in Touch</CardTitle>

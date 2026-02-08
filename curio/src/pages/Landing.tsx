@@ -1,15 +1,10 @@
-import { useMemo, useState } from "react";
-
 import { FeatureStepper } from "@/components/feature-stepper";
 import { FeatureBentoGrid } from "@/components/feature-bento-grid";
 import {
-  AppPreviewSection,
-  BookSection,
   ContactSection,
   HeroSection,
   LandingFooter,
   LandingNavbar,
-  bookPages,
 } from "@/components/landing/landing-sections";
 
 const featureShowcaseItems = [
@@ -44,14 +39,6 @@ const featureShowcaseItems = [
 ];
 
 const Landing = () => {
-  const [pageIndex, setPageIndex] = useState(0);
-
-  const currentPage = useMemo(() => bookPages[pageIndex], [pageIndex]);
-
-  const handleNextPage = () => {
-    setPageIndex((current) => (current + 1) % bookPages.length);
-  };
-
   const scrollToContact = () => {
     document.getElementById("contact")?.scrollIntoView({
       behavior: "smooth",
@@ -60,19 +47,37 @@ const Landing = () => {
   };
 
   return (
-    <main className="flex flex-col min-h-screen bg-muted text-foreground">
-      <LandingNavbar onContactClick={scrollToContact} />
-      <HeroSection />
+    <main className="h-screen snap-y snap-mandatory overflow-y-auto scroll-smooth bg-muted text-foreground">
+      <section className="snap-start">
+        <div className="flex min-h-screen flex-col">
+          <LandingNavbar onContactClick={scrollToContact} />
+          <HeroSection className="min-h-[calc(100vh-88px)] py-0" />
+        </div>
+      </section>
 
-      <AppPreviewSection />
-      <div className="flex items-center justify-center ">
-      <FeatureStepper heading="How Curio Works" features={featureShowcaseItems} />
+      <section className="snap-start">
+        <div className="flex min-h-screen items-center">
+          <FeatureStepper
+            heading="How Curio Works"
+            features={featureShowcaseItems}
+            className="pb-0"
+          />
+        </div>
+      </section>
 
-      </div>
-      <FeatureBentoGrid />
+      <section className="snap-start">
+        <div className="flex min-h-screen items-center">
+          <FeatureBentoGrid className="pb-0" />
+        </div>
+      </section>
+
+      <section className="snap-start">
+        <div className="flex min-h-screen flex-col justify-center">
+          <ContactSection className="pb-0" />
+          <LandingFooter />
+        </div>
+      </section>
       {/*<BookSection page={currentPage} onNextPage={handleNextPage} />*/}
-      <ContactSection />
-      <LandingFooter />
     </main>
   );
 };

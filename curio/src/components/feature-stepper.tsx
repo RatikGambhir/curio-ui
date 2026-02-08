@@ -376,12 +376,12 @@ const FeatureStepper = ({
   };
 
   return (
-    <section className={cn("py-32 w-full ", className)}>
-      <div className="flex flex-col space-y-20 justify-center items-center w-full">
-        <div className="flex flex-col justify-center items-center max-w-5xl">
+    <section className={cn("mx-auto w-full max-w-5xl px-6 pb-20 md:px-8", className)}>
+      <div className="flex w-full flex-col items-center justify-center space-y-20">
+        <div className="flex flex-col items-center justify-center max-w-5xl">
           <h2 className="text-2xl font-semibold sm:text-5xl">{heading}</h2>
         </div>
-        <div className="flex relative h-full min-h-[60vh] w-full max-w-2/3 overflow-hidden rounded-4xl bg-muted px-8 py-8 md:min-h-full md:py-20">
+        <div className="relative flex h-full min-h-[60vh] w-full overflow-hidden rounded-4xl bg-muted px-8 py-8 md:min-h-full md:py-20">
           <FeaturesDesktop
             features={features}
             handleNext={handleNext}
